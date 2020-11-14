@@ -3,5 +3,8 @@
   "version": "1.0",
   "license": "GPL-3.0",
   "description": "tests",
-  "main": "index.js"
+  "main": "index.js",
+  "scripts": {
+  "start": "node index.js"
+}
 }
