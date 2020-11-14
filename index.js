@@ -4,4 +4,4 @@ require('http')
   res.write('Ok!\n');
   res.end();
 })
-.listen(1234, () => console.log(process.pid));
+.listen();
