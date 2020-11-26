@@ -1,4 +1,4 @@
-export function hello()
+export default function hello()
 {
     console.log("Hello World");
 }
