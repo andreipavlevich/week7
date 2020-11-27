@@ -11,7 +11,7 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
 
     app.use((r, res, next) => { r.res.set(CORS); next(); });
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.get('/sha1/:input/', (req, res) => {
+    app.get('/sha1/:input', (req, res) => {
             var hash = crypto.createHash('sha1');
             hash = hash.update(req.params.input);
             hash = hash.digest('hex');
@@ -24,7 +24,8 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
             createReadStream(path).pipe(res);
     });
 
-    app.all('/req/', (req, res) => {
+    app.all('/req/:adress', (req, res) => {
+        console.log(req.query.addr);
     });
     
     app.get('/*', (req, res) => res.send('andreipavlevich'))
