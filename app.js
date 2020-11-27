@@ -11,7 +11,7 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
 
     app.use((r, res, next) => { r.res.set(CORS); next(); });
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.get('/sha1/:input/', r => {
+    app.get('/sha1/:input/', (req, res) => {
             const hash = crypto.createHash('sha1');
             hash = hash.update(req.params.input);
             hash = hash.digest('hex');
