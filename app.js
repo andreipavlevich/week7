@@ -13,8 +13,8 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
     app.use(bodyParser.urlencoded({ extended: true }));
     app.get('/sha1/:input/', r => {
             const hash = crypto.createHash('sha1');
-            hash.update(req.params.input);
-            hash.digest('hex');
+            hash = hash.update(req.params.input);
+            hash = hash.digest('hex');
             res.send(hash);
     });
     
@@ -26,6 +26,8 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
 
     app.all('/req/', (req, res) => {
     });
+    
+    app.get('/*', (req, res) => res.send('andreipavlevich'))
     
     return app;
 };
