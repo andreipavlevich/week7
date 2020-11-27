@@ -1,10 +1,9 @@
 {
   "name": "nodejs_test",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "scripts": {
     "start": "node index.js"
   },
-  "version": "1.0.2",
   "engines": {
     "node": ">=13.8.0"
   },

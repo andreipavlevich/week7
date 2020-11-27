@@ -24,11 +24,18 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
             createReadStream(path).pipe(res);
     });
 
-    app.all('/req/:adress', (req, res) => {
-        console.log(req.query.addr);
+    app.all('/req/', (req, res) => {
+        http.get(req.query.addr, (resp) => {
+          let contents = '';
+          resp.on('data', (chunk) =>
+          {
+            contents += chunk;
+          })
+          resp.on('end', () =>  res.send(contents));
+        });
     });
     
-    app.get('/*', (req, res) => res.send('andreipavlevich'))
+    app.all('/*', (req, res) => res.send('andreipavlevich'));
     
     return app;
 };
