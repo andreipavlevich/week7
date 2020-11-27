@@ -16,7 +16,7 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
     
     })
     
-    .get('/login/', (req, res) => res.send('goss'))
+    .get('/login/', (req, res) => res.send('andreipavlevich'))
     .get('/code/', (req, res) => {
  
     })
