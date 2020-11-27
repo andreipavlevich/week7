@@ -9,24 +9,23 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
         }; 
     
 
-    app
-    .use((r, res, next) => { r.res.set(CORS); next(); })
-    .use(bodyParser.urlencoded({ extended: true }))
-    .get('/sha1/:input', r => {
+    app.use((r, res, next) => { r.res.set(CORS); next(); });
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.get('/sha1/:input/', r => {
+            const hash = crypto.createHash('sha1');
+            hash.update(req.params.input);
+            hash.digest('hex');
+            res.send(hash);
+    });
     
-    })
-    
-    .get('/login/', (req, res) => res.send('andreipavlevich'))
-    .get('/code/', (req, res) => {
- 
-    })
-    ;
+    app.get('/login/', (req, res) => res.send('andreipavlevich'))
+    app.get('/code/', (req, res) => {
+            const path = import.meta.url.substring(7);
+            createReadStream(path).pipe(res);
+    });
 
     app.all('/req/', (req, res) => {
-         
-    })
- 
-     
+    });
+    
     return app;
-
 };
