@@ -17,6 +17,6 @@ const UserSchema = new m.Schema({
 
 import appSrc from './app.js';
 
-const app = appSrc(express, bodyParser, createReadStream, crypto, http, m, UserChema);
+const app = appSrc(express, bodyParser, createReadStream, crypto, http, m, UserSchema);
 
 app.listen(process.env.PORT || 4321);
