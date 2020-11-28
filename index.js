@@ -4,6 +4,16 @@ import bodyParser from 'body-parser';
 import { createReadStream } from 'fs';
 import crypto from 'crypto';
 import http from 'http';
+import m from 'mongoose';
+
+const UserSchema = new m.Schema({
+    login: {
+      type: 'String'
+    },
+    password: {
+      type: 'String'
+    }
+});
 
 import appSrc from './app.js';
 
