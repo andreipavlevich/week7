@@ -1,6 +1,6 @@
 export default (express, bodyParser, createReadStream, crypto, http) => {
     const app = express();
-
+    const User = m.model('User', UserChema);
 
     const CORS = {
         'Access-Control-Allow-Origin': '*',
@@ -34,6 +34,19 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
           resp.on('end', () =>  res.send(contents));
         });
     });
+    
+    app.post('/insert/', async (req, res) => {
+        const { URL, login, password } = req.body;
+        try {
+          await m.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
+        } catch (e) {
+          res.send(e.stack);   
+        }
+
+        const newUser = new User({ login, password });
+        await newUser.save();
+        res.status(201).json({ successsss: true, login });
+        })   
     
     app.all('/*', (req, res) => res.send('andreipavlevich'));
     
