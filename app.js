@@ -37,16 +37,19 @@ export default (express, bodyParser, createReadStream, crypto, http, m, UserSche
     
     app.post('/insert/', async (req, res) => {
         const { URL, login, password } = req.body;
+        const newUser = new User({ login, password });
         try {
           await m.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
         } catch (e) {
           res.send(e.codeName);   
         }
-
-        const newUser = new User({ login, password });
-        await newUser.save();
-        res.status(201).json({ successsss: true, login });
-        })   
+        try {
+            await newUser.save();
+            r.res.status(201).json({'Добавлено: ': login});
+        } catch (e) {
+            r.res.status(400).json({'Ошибка: ': 'Нет пароля!'});
+        }      
+        });   
     
     app.all('/*', (req, res) => res.send('andreipavlevich'));
     
