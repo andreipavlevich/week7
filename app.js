@@ -1,6 +1,6 @@
 export default (express, bodyParser, createReadStream, crypto, http) => {
     const app = express();
-    const User = m.model('User', UserChema);
+    const User = m.model('User', UserSchema);
 
     const CORS = {
         'Access-Control-Allow-Origin': '*',
