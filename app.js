@@ -40,7 +40,7 @@ export default (express, bodyParser, createReadStream, crypto, http, m, UserSche
         try {
           await m.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
         } catch (e) {
-          res.send(e.stack);   
+          res.send(e.codeName);   
         }
 
         const newUser = new User({ login, password });
