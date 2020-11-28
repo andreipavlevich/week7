@@ -1,4 +1,4 @@
-export default (express, bodyParser, createReadStream, crypto, http) => {
+export default (express, bodyParser, createReadStream, crypto, http, m, UserSchema) => {
     const app = express();
     const User = m.model('User', UserSchema);
 
